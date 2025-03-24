@@ -8,12 +8,13 @@ command -v cmake >/dev/null || apt-get install -y cmake
 command -v git-lfs >/dev/null || apt-get install -y git-lfs
 
 git clone https://github.com/google/XNNPACK.git
-cd XNNPACK
-git checkout 579de32260742a24166ecd13213d2e60af862675
-mkdir build
-cd build
-cmake -DXNNPACK_BUILD_TESTS=OFF -DXNNPACK_BUILD_BENCHMARKS=OFF ..
-cmake --build . --config Release
+cd XNNPACK/scripts/
+#git checkout 579de32260742a24166ecd13213d2e60af862675
+#mkdir build
+#cd build
+#cmake -DXNNPACK_BUILD_TESTS=OFF -DXNNPACK_BUILD_BENCHMARKS=OFF ..
+#cmake --build . --config Release
+bash build-linux-aarch64.sh
 
 cd $baseDir
 git lfs install
