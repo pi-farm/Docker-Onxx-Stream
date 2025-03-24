@@ -7,7 +7,7 @@ set -e
 export baseDir=/app/onxx-stream
 mkdir -p $baseDir
 cd $baseDir
-command -v cmake >/dev/null || apt-get install -y cmake g++-aarch64-linux-gnu python3 git git-lfs
+command -v cmake >/dev/null || apt-get install -y cmake g++-aarch64-linux-gnu python3 git git-lfs curl
 
 ###
 
@@ -45,5 +45,6 @@ cmake --build . --config Release
 #cmake --build . --config Release
 
 # Aufruf
+# ./sd --turbo --models-path /app/onxx-stream/stable-diffusion-xl-turbo-1.0-onnxstream --prompt "A cinematic shot of a baby raccoon wearing an intricate italian priest robe." --steps 1 --output test1.png
 #cd $baseDir/OnnxStream/src/build/
 #time $baseDir/sd --turbo --rpi --models-path $baseDir/stable-diffusion-xl-turbo-1.0-onnxstream --prompt "An astronaut riding a horse on Mars" --steps 1 --output astronaut.png
