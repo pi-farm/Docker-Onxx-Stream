@@ -1,20 +1,17 @@
 #!/bin/bash
+# docker run -it debian:12-slim /bin/bash
+
+apt-get update
 set -e
 export baseDir=/app/onxx-stream
-mkdir $baseDir
+mkdir -p $baseDir
 cd $baseDir
-
-command -v cmake >/dev/null || apt-get install -y cmake
-command -v git-lfs >/dev/null || apt-get install -y git-lfs
-
+command -v cmake >/dev/null || apt-get install -y cmake g++-aarch64-linux-gnu python3 git git-lfs
 git clone https://github.com/google/XNNPACK.git
-cd XNNPACK/scripts/
-#git checkout 579de32260742a24166ecd13213d2e60af862675
-#mkdir build
-#cd build
-#cmake -DXNNPACK_BUILD_TESTS=OFF -DXNNPACK_BUILD_BENCHMARKS=OFF ..
-#cmake --build . --config Release
-bash build-linux-aarch64.sh
+cd XNNPACK
+bash scripts/build-linux-aarch64.sh
+
+###
 
 cd $baseDir
 git lfs install
